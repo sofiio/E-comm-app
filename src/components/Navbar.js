@@ -26,28 +26,28 @@ function Navbar({ searchTerm, setSearchTerm }) {
         {/* to make mobile friend design */}
         
         <Link to="/">
-        <h1 className="text-2xl sm:text-3xl lg:text-4xl px-2  p-0">
+        <h1 className="text-5px sm:text-3xl lg:text-4xl sm:px-1 md:px-2  p-0">
           Best <span className="font-bold">Eats</span>
         </h1>
         </Link>
         
-        <div className="flex bg-gray-200 items-center  rounded-full">
-          <p className="px-2 bg-black rounded-full text-white">Delivery</p>
-          <p className="px-2">Pickup</p>
+        <div className="flex bg-gray-200 items-center  rounded-full ">
+          <p className="px-2 bg-black rounded-full w-13 sm:w-full md:w-full lg:w-full text-white text-xs sm:text-sm md:text-base lg:text-lg">Delivery</p>
+          <p className="px-2 w-12 text-xs sm:text-sm md:text-base lg:text-lg sm:w-full md:w-full lg:w-full">Pickup</p>
         </div>
         <div className="flex flex-1 bg-gray-200 rounded-full px-2 w-[200px] lg:w-[500px] sm:w-[400px] h-10 items-center">
           <AiOutlineSearch size={20}  />
           {/*focus:outline-none --- to get rid of ugly box inside input  */}
           <input
             type="text"
-            className="bg-transparent focus:outline-none w-full"
+            className="bg-transparent focus:outline-none w-10 sm:w-full md:w-full lg:w-full"
             placeholder="Search foods"
             onChange={(event) => {
               setSearchTerm(event.target.value);
             }}
           />
         </div>
-        <button className="bg-black text-white flex rounded-lg px-4 items-center">
+        <button className="bg-black text-white flex rounded-lg sm:px-2 md:px-3 lg:px-4 items-center ">
           <AiOutlineShoppingCart size={20} />
           <h1>cart</h1>
         </button>
