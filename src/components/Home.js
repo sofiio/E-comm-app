@@ -3,20 +3,16 @@ import Hero from "./Hero";
 import Navbar from "./Navbar";
 import { useState, useEffect } from "react";
 import { json, Link, } from 'react-router-dom';
-import CheckoutProduct from "./CheckoutProduct";
 import Filter_menu from "./Filter_menu";
 import { useStateValue } from "./StateProvider";
 import Product from "../Product";
 
 
-function Home({id, title, image, price}) {
+function Home() {
   const [searchTerm, setSearchTerm] = useState("");
   const [data, setData] = useState([]);
   const [noOneElement, setNoOneElement] = useState(6);
-  const [{basket}, dispatch] = useStateValue();
-
-  
-
+ 
   const slice = data.slice(0, noOneElement);
 
 

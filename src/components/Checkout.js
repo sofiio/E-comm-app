@@ -10,7 +10,7 @@ function CheckOut() {
   return (
     <>
       <Navbar />
-      <div className="p-4 text-xl">
+      <div className="max-w-[1640px] mx-auto p-4 text-xl">
       {basket?.length === 0 ? (
         <div >
           <h2 >Your shopping basket is empty</h2>
