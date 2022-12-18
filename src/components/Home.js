@@ -6,6 +6,7 @@ import { json, Link, } from 'react-router-dom';
 import Filter_menu from "./Filter_menu";
 import { useStateValue } from "./StateProvider";
 import Product from "../Product";
+import Footer from "../Footer";
 
 
 function Home() {
@@ -45,7 +46,7 @@ function Home() {
 
 
   return (
-    <div className="max-w-[1640px] mx-auto ">
+    <div className="max-w-[1640px] mx-auto  ">
       <Navbar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       <Hero />
 
@@ -82,7 +83,7 @@ function Home() {
           ))}
       </div>
       <button className= "bg-white text-black font-bold  w-[400px] h-[40px] m-4" onClick={loadMore}>Load more...</button>
-    
+      <Footer/>
     </div>
   );
 }

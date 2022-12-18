@@ -2,6 +2,7 @@ import { useStateValue } from "./StateProvider";
 
 import CheckoutProduct from "./CheckoutProduct";
 import Navbar from "./Navbar";
+import Footer from "../Footer";
 
 
 //
@@ -29,8 +30,6 @@ function CheckOut() {
         />
         ))}
         </div>
-        
-        
         </div>
 
       )}
