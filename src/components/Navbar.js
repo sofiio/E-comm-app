@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import reducer from "./Reducer";
+import { useStateValue } from "./StateProvider";
+import CheckOut from "./Checkout";
 import {
   AiOutlineCar,
   AiOutlineClose,
@@ -16,6 +19,8 @@ import { Link } from "react-router-dom";
 function Navbar({ searchTerm, setSearchTerm }) {
   const [nav, setNav] = useState(false);
 
+  const [{basket} , dispatch] =useStateValue()
+
   return (
     <>
     <div className="max-w-[1640px]  mx-auto items-center p-4 sticky top-0 z-10 bg-white">
@@ -23,7 +28,6 @@ function Navbar({ searchTerm, setSearchTerm }) {
         <div className="cursor-pointer " onClick={() => setNav(true)}>
           <AiOutlineMenu size={30} />
         </div>
-        {/* to make mobile friend design */}
         
         <Link to="/">
         <h1 className="text-5px sm:text-3xl lg:text-4xl sm:px-1 md:px-2  p-0">
@@ -37,7 +41,7 @@ function Navbar({ searchTerm, setSearchTerm }) {
         </div>
         <div className="flex flex-1 bg-gray-200 rounded-full px-2 w-[200px] lg:w-[500px] sm:w-[400px] h-10 items-center">
           <AiOutlineSearch size={20}  />
-          {/*focus:outline-none --- to get rid of ugly box inside input  */}
+         
           <input
             type="text"
             className="bg-transparent focus:outline-none w-10 sm:w-full md:w-full lg:w-full"
@@ -47,22 +51,20 @@ function Navbar({ searchTerm, setSearchTerm }) {
             }}
           />
         </div>
+        <Link to="/CheckOut">
         <button className="bg-black text-white flex rounded-lg sm:px-2 md:px-3 lg:px-4 items-center ">
           <AiOutlineShoppingCart size={20} />
-          <h1>cart</h1>
+          <h1>cart<span className="p-2 text-xs">{basket.length}</span></h1>
         </button>
+        </Link>
       </div>
 
-      {/* burgermenu structure */}
-
-      {/* is nav = active(true) show me black background */}
       <div
         className={
           nav ? "bg-black/80 fixed w-full h-screen z-10 top-0 left-0" : ``
         }
       ></div>
 
-      {/* left-[-100%] makes div invisible */}
       <div
         className={
           nav
@@ -73,7 +75,7 @@ function Navbar({ searchTerm, setSearchTerm }) {
         <h2 className="text-2xl p-4">
           Best <span className="font-bold">Eats</span>
         </h2>
-        {/* {()=>setNav(!nav)} is the same as  {()=>setNav(false) is the same as : make nav inactive} */}
+        
         <AiOutlineClose
           onClick={() => setNav(!nav)}
           className="right-4 top-4 cursor-pointer absolute duration-300"

@@ -5,11 +5,17 @@ import { useState, useEffect } from "react";
 import { json, Link, } from 'react-router-dom';
 import CheckoutProduct from "./CheckoutProduct";
 import Filter_menu from "./Filter_menu";
+import { useStateValue } from "./StateProvider";
+import Product from "../Product";
 
-function Home() {
+
+function Home({id, title, image, price}) {
   const [searchTerm, setSearchTerm] = useState("");
   const [data, setData] = useState([]);
   const [noOneElement, setNoOneElement] = useState(6);
+  const [{basket}, dispatch] = useStateValue();
+
+  
 
   const slice = data.slice(0, noOneElement);
 
@@ -21,7 +27,6 @@ function Home() {
         })
     );
 };
-
 
 
   useEffect(() => {
@@ -72,26 +77,16 @@ function Home() {
           })
 
           .map((values, key) => (
-            <>
-              <div className=" flex flex-col hover:scale-105 duration-300 w-full h-full  text-xl p-14 bg-white items-center">
-              <Link to="/CheckoutProduct">
-                <img
-                  src={values.image}
-                  className="max-w-[150px] h-[200px] "
-                  alt=""
-                />
-               </Link>
-                <p className=" text-black font-bold p-4">{values.title}</p>
-                <span className="pt-2 text-black p-4">{values.price}$</span>
-
-                <button className="bg-orange-600 text-white font-bold rounded-xl  w-[150px] m-4">
-                  Order now
-                </button>
-              </div>
-            </>
+            <Product
+            id={values.id}
+            title={values.title}
+            image={values.image}
+            price={values.price}
+    />
           ))}
       </div>
       <button className= "bg-white text-black font-bold  w-[400px] h-[40px] m-4" onClick={loadMore}>Load more...</button>
+    
     </div>
   );
 }
