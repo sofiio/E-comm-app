@@ -2,11 +2,9 @@ import React from "react";
 import Hero from "./Hero";
 import Navbar from "./Navbar";
 import { useState, useEffect } from "react";
-import { json, Link, } from 'react-router-dom';
-import Filter_menu from "./Filter_menu";
-import { useStateValue } from "./StateProvider";
 import Product from "../Product";
 import Footer from "../Footer";
+
 
 
 function Home() {
@@ -17,19 +15,7 @@ function Home() {
   const slice = data.slice(0, noOneElement);
 
 
-  const filterType = (category) => {
-    setData(
-        data.filter((item)=> {
-            return item.category === category;
-        })
-    );
-};
-
-
-  useEffect(() => {
-    Fakestore();
-  }, []);
-
+  
   const Fakestore = async () => {
     const ApiGet = fetch(`https://fakestoreapi.com/products`)
       .then((res) => res.json())
@@ -38,6 +24,25 @@ function Home() {
         setData(json);
       });
   };
+
+  
+
+  useEffect(() => {
+    Fakestore();
+    // ეს ცარიელი მასივი არის დიფენდენსი მასივი, რაც იზამს იმას, რომ fetch  გაეშვება მხოლოდ პირველ რენდერზე და მორჩა, ყოველ ჯერზე აღარ მოხდება იუზ ეფექტი 
+  }, []);
+
+
+
+  const filterType = (category) => {
+    setData(
+          data.filter((item)=> {
+          console.log(data)
+            return item.category ===  category;
+        })
+    );
+};
+
 
 
   function loadMore(){
@@ -54,7 +59,7 @@ function Home() {
 
     <div className=" max-w-[1640px] p-4 "><span className='text-white text-xl'>Choose category
     <div className='flex'>
-    <button onClick= {()=>setData(data)}  className="bg-orange-600 hover:bg-white text-white hover:text-black font-bold rounded-xl  w-[120px] m-4" >all</button>
+    <button onClick= {()=>setData(data)} className="bg-orange-600 hover:bg-white text-white hover:text-black font-bold rounded-xl  w-[120px] m-4" >all</button>
     <button onClick={()=> filterType("men's clothing")} className="bg-orange-600 hover:bg-white text-white hover:text-black font-bold rounded-xl  w-[120px] m-4">men's</button>
     <button onClick={()=> filterType("jewelery")}className="bg-orange-600 hover:bg-white text-white hover:text-black font-bold rounded-xl  w-[120px] m-4">women's</button>
     </div>
@@ -79,6 +84,7 @@ function Home() {
             title={values.title}
             image={values.image}
             price={values.price}
+            description={values.description}
     />
           ))}
       </div>

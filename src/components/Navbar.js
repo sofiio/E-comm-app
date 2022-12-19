@@ -20,6 +20,7 @@ function Navbar({ searchTerm, setSearchTerm }) {
   const [nav, setNav] = useState(false);
 
   const [{basket} , dispatch] =useStateValue()
+  
 
   return (
     <>
