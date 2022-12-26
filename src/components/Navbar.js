@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import reducer from "./Reducer";
 import { useStateValue } from "./StateProvider";
-import CheckOut from "./Checkout";
 import {
   AiOutlineCar,
   AiOutlineClose,

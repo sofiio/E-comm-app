@@ -1,6 +1,7 @@
 export const initialState = {
   basket: [],
   user: null,
+
 };
 
 function reducer(state, action) {
@@ -11,11 +12,6 @@ function reducer(state, action) {
         basket: [...state.basket, action.item],
       };
 
-    case `SEE_DETAILS`:
-      return {
-        ...state,
-        basket: [...state.basket, action.item],
-      };
 
     case `REMOVE_FROM_BASKET`:
       let newBasket = [...state.basket];

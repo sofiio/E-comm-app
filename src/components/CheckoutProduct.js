@@ -22,7 +22,7 @@ export default function CheckoutProduct({ id, title, image, price }) {
           <strong>{price}</strong>
         </p>
         <button
-          className="border-4 bg-black text-white"
+          className=" bg-red-600 w-64 text-white mt-5 border border-black"
           onClick={removeFromBasket}
         >
           Remove from basket

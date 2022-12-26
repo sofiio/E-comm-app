@@ -4,12 +4,12 @@ import Navbar from "./Navbar";
 import { useState, useEffect } from "react";
 import Product from "../Product";
 import Footer from "../Footer";
+import { useParams } from "react-router-dom";
 
 function Home() {
   const [searchTerm, setSearchTerm] = useState("");
   const [data, setData] = useState([]);
   const [noOneElement, setNoOneElement] = useState(6);
-
 
   const [filters, setFilters] = useState(data);
 
@@ -17,25 +17,22 @@ function Home() {
 
   useEffect(() => {
     const Fakestore = async () => {
-      const response = await fetch(`https://fakestoreapi.com/products`);
+      const response = await fetch(`https://fakestoreapi.com/products/`);
 
       if (componentMoundet) {
         setData(await response.clone().json());
         setFilters(await response.json());
       }
-
     };
 
     Fakestore();
     // this empty array is a dependency, which causes that  fetch runs only when component first renders  - no more time
   }, []);
 
-  
   const filterType = (category) => {
     const updateList = data.filter((x) => x.category === category);
     setFilters(updateList);
   };
-
 
   function loadMore() {
     setNoOneElement(noOneElement + noOneElement);

@@ -17,12 +17,9 @@ function App() {
             </div>
           }
         />
-         <Route path="/CheckoutProduct" element={<CheckoutProduct /> }
-        />
-          <Route path="/CheckOut" element={<CheckOut /> }
-        />
-          <Route path="/ProductDetails" element={<ProductDetails /> }
-        />
+        <Route path="/CheckoutProduct" element={<CheckoutProduct />} />
+        <Route path="/CheckOut" element={<CheckOut />} />
+        <Route path="/product/:id" element={<ProductDetails />} />
       </Routes>
     </BrowserRouter>
   );

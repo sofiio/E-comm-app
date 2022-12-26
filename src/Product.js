@@ -1,31 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useStateValue } from "./components/StateProvider";
 
-function Product({ id, title, image, price, description }) {
-  const [{ basket }, dispatch] = useStateValue();
+const Product = (product) => {
+  const { id, title, image, price, description } = product;
+  console.log(product);
 
   return (
     <>
       <div className=" flex flex-col hover:scale-105 duration-300 w-full h-full  text-xl p-14 bg-white items-center">
-        <Link to="/ProductDetails">
-          <img
-            onClick={() =>
-              dispatch({
-                type: `SEE_DETAILS`,
-                item: {
-                  id: id,
-                  title: title,
-                  image: image,
-                  price: price,
-                  description: description,
-                },
-              })
-            }
-            src={image}
-            className="max-w-[150px] h-[200px] "
-            alt=""
-          />
+        <Link to={`/product/${product.id}`}>
+          <img src={image} className="max-w-[150px] h-[200px] " alt="" />
         </Link>
 
         <p className=" text-black font-bold p-4">{title}</p>
@@ -34,6 +18,6 @@ function Product({ id, title, image, price, description }) {
       </div>
     </>
   );
-}
+};
 
 export default Product;
