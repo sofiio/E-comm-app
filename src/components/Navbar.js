@@ -20,20 +20,21 @@ function Navbar({ searchTerm, setSearchTerm }) {
   const [{ basket }, dispatch] = useStateValue();
 
   return (
-    <>
-      <div className="max-w-[1640px]  mx-auto items-center p-4 sticky top-0 z-10 bg-white">
-        <div className="flex items-center space-x-4 ">
+    <div className=" w-full bg-white sticky top-0 z-10">
+      <div className="max-w-[1640px]  mx-auto p-4 ">
+        <div className="flex items-center lg:space-x-4 space-x-2">
           <div className="cursor-pointer " onClick={() => setNav(true)}>
             <AiOutlineMenu size={30} />
           </div>
 
-          <Link to="/">
-            <h1 className="text-5px sm:text-3xl lg:text-4xl sm:px-1 md:px-2  p-0">
+          <Link to="/" className="hidden md:block">
+            <h1 className="text-5px sm:text-3xl lg:text-4xl sm:px-1 md:px-2  ">
               Best <span className="font-bold">Eats</span>
             </h1>
           </Link>
 
-          <div className="flex bg-gray-200 items-center  rounded-full ">
+          <Link to="/">
+          <div className="flex  bg-gray-200 items-center  rounded-full ">
             <p className="px-2 bg-black rounded-full w-13 sm:w-full md:w-full lg:w-full text-white text-xs sm:text-sm md:text-base lg:text-lg">
               Delivery
             </p>
@@ -41,13 +42,14 @@ function Navbar({ searchTerm, setSearchTerm }) {
               Pickup
             </p>
           </div>
+          </Link>
           <div className="flex flex-1 bg-gray-200 rounded-full px-2 w-[200px] lg:w-[500px] sm:w-[400px] h-10 items-center">
             <AiOutlineSearch size={20} />
 
             <input
               type="text"
               className="bg-transparent focus:outline-none w-10 sm:w-full md:w-full lg:w-full"
-              placeholder="Search foods"
+              placeholder="Search"
               onChange={(event) => {
                 setSearchTerm(event.target.value);
               }}
@@ -119,7 +121,7 @@ function Navbar({ searchTerm, setSearchTerm }) {
           </nav>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

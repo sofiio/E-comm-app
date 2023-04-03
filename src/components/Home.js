@@ -33,37 +33,39 @@ function Home() {
     const updateList = data.filter((x) => x.category === category);
     setFilters(updateList);
   };
+  
+  
 
   function loadMore() {
     setNoOneElement(noOneElement + noOneElement);
   }
 
   return (
-    <div className="max-w-[1640px] mx-auto  ">
+    <div>
       <Navbar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       <Hero />
 
-      <div className=" max-w-[1640px] p-4 ">
+      <div className=" max-w-[1640px] mx-auto p-4 ">
         <span className="text-white text-xl">
           Choose category
           <div className="flex">
             <button
               onClick={() => setFilters(data)}
-              className="bg-orange-600 hover:bg-white text-white hover:text-black font-bold rounded-xl  w-[120px] m-4"
+              className="bg-orange-600 hover:bg-white text-white hover:text-black font-bold rounded-xl  lg:w-[120px] w-[90px] h-[30px] mt-4"
             >
-              all
+              <h2 className="text-[15px] lg:text-[20px]">all</h2>
             </button>
             <button
               onClick={() => filterType("men's clothing")}
-              className="bg-orange-600 hover:bg-white text-white hover:text-black font-bold rounded-xl  w-[120px] m-4"
+              className="bg-orange-600 hover:bg-white text-white hover:text-black font-bold rounded-xl  lg:w-[120px] w-[90px]  h-[30px] mt-4 ml-4"
             >
-              men's
+              <h2 className="text-[15px] lg:text-[20px]">men's</h2>
             </button>
             <button
               onClick={() => filterType("jewelery")}
-              className="bg-orange-600 hover:bg-white text-white hover:text-black font-bold rounded-xl  w-[120px] m-4"
+              className="bg-orange-600 hover:bg-white text-white hover:text-black font-bold rounded-xl  lg:w-[120px] w-[90px]  h-[30px] mt-4 ml-4"
             >
-              women's
+              <h2 className="text-[15px] lg:text-[20px]">women's</h2>
             </button>
           </div>
         </span>
@@ -93,12 +95,14 @@ function Home() {
             />
           ))}
       </div>
+      <div className="max-w-[1640px]  mx-auto">
       <button
-        className="bg-white text-black font-bold  w-[400px] h-[40px] m-4"
+        className="bg-white text-black font-bold  lg:w-[400px] w-[340px] h-[40px] m-4 "
         onClick={loadMore}
       >
         Load more...
       </button>
+      </div>
       <Footer />
     </div>
   );
